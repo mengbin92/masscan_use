@@ -100,16 +100,18 @@ if __name__ == "__main__":
     filelist = getXMLfile('.')
     print(filelist)
     for file in filelist:
-        ip = readXML(file)
-        for r in ip:
-            #print(r,ip[r])
-            if  opt.is_exist(r):
-                #print('exist')
-                continue
-            else:
-                sql = "insert into blackIP(addr,addrtype) values(\""+r+"\",\""+ip[r]+"\");"
-                #print(sql)
-                opt.insert(sql)
+        size = os.path.getsize(file)
+        if size > 0:
+            ip = readXML(file)
+            for r in ip:
+                #print(r,ip[r])
+                if  opt.is_exist(r):
+                    #print('exist')
+                    continue
+                else:
+                    sql = "insert into blackIP(addr,addrtype) values(\""+r+"\",\""+ip[r]+"\");"
+                    #print(sql)
+                    opt.insert(sql)
     print('Done')
 
     
