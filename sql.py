@@ -89,12 +89,12 @@ def modify(num,line):
     open('mass.conf','w').writelines(lines)
 
 if __name__ == "__main__":
-    opt = MySqlOp('127.0.0.1','root',',.klio89','db_fingerprint')
+    opt = MySqlOp('127.0.0.1','root',',.klio89','fingerprint')
     #opt.select("select * from finger")
     lines = open('ip.txt','r').readlines()
     length = len(lines)-1
     for i in range(length):
-        modify(i,lines[i])
+        modify(i,lines[i].replace(' ',''))
         os.system('masscan -c mass.conf')
     
     filelist = getXMLfile('.')
