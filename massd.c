@@ -63,6 +63,7 @@ int main(int argc,char* argv[])
 
         system("python3 sql.py");
         sleep(6*3600);
+        system("rm -f *.xml");
     }
 
 
